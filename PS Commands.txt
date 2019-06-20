@@ -1,0 +1,19 @@
+#Powershell Commands
+
+#Get all SQL instances running on network
+[System.Data.Sql.SqlDataSourceEnumerator]::Instance.GetDataSources()
+
+#To know more about the different properties and methods available to you from the object returned by the script
+[System.Data.Sql.SqlDataSourceEnumerator]::Instance.GetDataSources() | Get-Member
+
+#run the Get-Service cmdlet to query for the SQL Browser service on a computer and, if it is not started, force it to start using the Start-Service cmdlet
+Get-Service | Where-Object {$_.Name -eq "SQLBrowser"} | Start-Service
+
+#Display local windows user accounts and their associated SID
+gwmi Win32_UserAccount -computername "." -filter "LocalAccount=True"
+
+#check which version of .NET Framework of with Powershell (v4.5 and later)
+#Powershell 5
+Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' |  Get-ItemPropertyValue -Name Release | Foreach-Object { $_ -ge 394802 }
+#Powershell 4
+(Get-ItemProperty "HKLM:SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Release -ge 394802
