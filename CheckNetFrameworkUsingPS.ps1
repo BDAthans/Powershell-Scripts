@@ -10,7 +10,7 @@ Write-Output("------------------------------------------------------------------
 Write-Output($nl + "Microsoft .NET Framework v3 Information" + $nl)
 (Get-ItemProperty "HKLM:SOFTWARE\Microsoft\NET Framework Setup\NDP\v3*") #returns full v3 information
 Write-Output("-------------------------------------------------------------------------------" + $nl)
-Write-Output($nl + "Microsoft .NET Framework v2 Information" + $nl)
+Write-Output($nl + "Microsoft .NET Framework v2 or Below Information" + $nl)
 (Get-ItemProperty "HKLM:SOFTWARE\Microsoft\NET Framework Setup\NDP\v2*") #returns full v2 information
 
 pause
